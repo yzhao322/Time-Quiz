@@ -1,0 +1,22 @@
+h1{
+    text-align: center;
+    padding: 20px;
+    font-size: 10px;
+}
+button{
+    padding: 10px 40px;
+    font-size: 20px;
+    border-radius: 20px;
+    color: darkgrey;
+    
+}
+button:hover{
+    background-color: rgb(60, 109, 245);
+}
+
+h2{
+    font-size: 10px;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
