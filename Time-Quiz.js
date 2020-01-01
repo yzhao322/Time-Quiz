@@ -40,16 +40,17 @@ $( document ).ready(function() {
     var score;
     var localSN = 0;
 
-
+    $('hr').hide();
         h1.click(function () {
             h1.hide();
+            
             i = 0; 
             times = 0;
             count = 75;
             score = 0;
             var timer = setInterval(function () {
-                h2.value = count--;
                 h2.empty().append('Time Remain ' + count);
+                h2.value = count--;
                 if (times === 5) {
                     alert("You completed quiz!");
                     score = count;
@@ -76,24 +77,31 @@ $( document ).ready(function() {
         });
 
     function quizQuestion() {
+        
         if (i < 5) {
             var div = $('<div>');
             div.text(i + 1 + ". " + questions[i].title);
+            div.css('padding', '10px');
             h3.empty().append(div);
+        
         
             for (var j = 0; j < questions[i].choices.length; j++) {
                 var btn = $('<button>');
                 btn.text(questions[i].choices[j]);
                 div.append(btn);
+                btn.css('display', 'block');
+                btn.css('margin', '30px');
+                btn.css('margin-left', '100px');
             }
             
             div.click(function (event) {
                 event.preventDefault();
-              
+                
                 if (questions[i].answer === $(event.target).text()) {
                     times = times + 1;
-                    h4.text("Correct");
                     i++;
+                    h4.text('Correct!').show(1).delay(300).hide(1);
+                    $('hr').show(1).delay(300).hide(1);
                     quizQuestion();
             
                 }
@@ -101,7 +109,8 @@ $( document ).ready(function() {
                     count = count - 15;
                     times = times + 1;
                     i++;
-                    h4.text("Wrong");
+                    $('hr').show();
+                    h4.text('Wrong!');  
                     quizQuestion();
                     
                 }
@@ -116,16 +125,19 @@ $( document ).ready(function() {
     }
 
     function allDone() {
+        $('hr').hide();
         h2.hide();
         h4.hide();
         var div = $('div');
         div.text("All Done!");
+        div.css('font-size', '30px');
         var p = $('<p>');
         p.text("Your Final Score is  " + score + ".");
         div.append(p);
         h5.text("Enter Your Initial:  ");
         $('<input>').attr('type', 'text').attr('id', 'name').appendTo(h5);
         $('<input>').attr('type', 'submit').attr('id', 'submitScore').appendTo(h5);
+        h5.css('text-align', 'center');
         $('#submitScore').click(function () {
             var name = $('#name').val();
             var objNAS = { 'name': name, 'score': score };
@@ -139,12 +151,15 @@ $( document ).ready(function() {
         h5.hide();
         var h6 = $('<h6>');
         h6.text("Highscores");
+        h6.css('font-size', '50px');
+        h6.css('margin', '30px');
         $('body').append(h6);
         var storeNameAndScore = JSON.parse(localStorage.getItem("objNAS"+ localSN));
         var ol = $('<ol>');
         var li = $('<li>');
         h6.append(ol);
         ol.append(li.text(storeNameAndScore.name + " - " + "(" + storeNameAndScore.score + ")"));
+        ol.css('font-size', '20px');
         var div = $('<div>');
         $('<button>').attr('id', 'goBack').text("Go Back").appendTo(div);
         $('<button>').attr('id', 'clearHighScore').text("Clear Highscores").appendTo(div);

@@ -1,22 +1,49 @@
+body{
+    background-color: rgb(165, 164, 164);
+}
 h1{
     text-align: center;
-    padding: 20px;
-    font-size: 10px;
+    padding: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+h3{
+    text-align:center;
+    margin: 30px;
+}
+div{
+    text-align:center;
+    margin: 30px;
 }
 button{
-    padding: 10px 40px;
-    font-size: 20px;
+    padding: 10px 30px;
+    font-size: 15px;
     border-radius: 20px;
-    color: darkgrey;
     
 }
-button:hover{
+button:active{
     background-color: rgb(60, 109, 245);
 }
 
 h2{
     font-size: 10px;
     position: fixed;
-    right: 0;
-    top: 0;
+    right: 10px;
+    top: 10px;
+}
+p{
+    font-size: 20px;
+    padding: 30px;
+    font-weight: 200;
+    line-height: 25px;
+}
+#goBack{
+    display: inline-block;
+    margin: 10px;
+}
+
+#clearHighScore{
+    display: inline-block;
+    margin: 10px;
 }
