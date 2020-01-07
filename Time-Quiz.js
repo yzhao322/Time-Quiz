@@ -75,24 +75,22 @@ $(document).ready(function () {
             var div = $('<div>');
             div.text(i + 1 + ". " + questions[i].title);
             div.css('padding', '20px');
-            div.css('padding-top', '45px');
+            div.css('padding-top', '50px');
             h3.empty().append(div);
         
         
             for (var j = 0; j < questions[i].choices.length; j++) {
                 var btn = $('<button>');
+                btn.attr('id', 'options');
                 btn.text(questions[i].choices[j]);
                 div.append(btn);
                 btn.css('display', 'block');
                 btn.css('margin-top', '30px');
-                if ($(window).width() <= 680) {
-                    btn.css('width', '60%');
-                    btn.css('margin-right', 'auto');
-                    btn.css('margin-left', 'auto');
-                }
-                else {
-                    btn.css('margin-left', '25%');
-                }
+                btn.css('width', '160px');
+                btn.css('margin-right', 'auto');
+                btn.css('margin-left', 'auto');
+                
+                
             }
             
             div.click(function (event) {
@@ -132,7 +130,6 @@ $(document).ready(function () {
         h4.hide();
         var div = $('div');
         div.text("All Done!");
-        div.css('font-size', '30px');
         var p = $('<p>');
         p.text("Your Final Score is  " + score + ".");
         div.append(p);
@@ -140,7 +137,6 @@ $(document).ready(function () {
         $('<input>').attr('type', 'text').attr('id', 'name').appendTo(h5);
         $('<input>').attr('type', 'submit').attr('id', 'submitScore').appendTo(h5);
         h5.css('text-align', 'center');
-        $('input').css('font-size', '16px');
         $('#submitScore').click(function () {
             var name = $('#name').val();
             var nameAndScore = { 'name': name, 'score': score };
@@ -148,6 +144,15 @@ $(document).ready(function () {
             highScores();
 
         });
+        if ($(window).width() <= 680) {
+            div.css('font-size', '30px');
+            $('input').css('font-size', '16px');
+        }
+        else {
+            div.css('font-size', '60px');
+            p.css('font-size', '40px');
+            $('input').css('font-size', '23px');
+        }
     }
     
     function highScores() {
@@ -157,6 +162,8 @@ $(document).ready(function () {
         h6.text("Highscores");
         h6.css('font-size', '50px');
         h6.css('margin', '30px');
+        h6.css('font-weight', 'bold');
+        h6.css('font-family', 'Times New Roman');
         $('body').append(h6);
         var ol = $('<ol>');
         h6.append(ol);
@@ -175,6 +182,9 @@ $(document).ready(function () {
         }
         ol.css('font-size', '20px');
         ol.css('font-weight', '200');
+        ol.css('margin', '40px');
+        $('li').css('margin-top', '10px');
+        $('li').css('background-color', 'grey');
         var items = $('ol > li').get();
         items.sort(function (a, b) {
             var A = $(a);
@@ -212,9 +222,15 @@ $(document).ready(function () {
             }
             ol.remove();
         })
-
-   
-        
+        if ($(window).width() <= 680) {
+            h6.css('font-size', '50px');
+            ol.css('font-size', '20px');
+        }
+        else {
+            h6.css('font-size', '75px');
+            ol.css('font-size', '35px');
+        }
+ 
     }
 
     highScore.click(function () {
@@ -228,9 +244,10 @@ $(document).ready(function () {
         var h7 = $('<h7>');
         $('body').append(h7);
         h7.text("Highscores");
-        h7.css('font-size', '50px');
         h7.css('margin', '50px');
+        h7.css('font-weight', 'bold');
         h7.css('font-family', 'Times New Roman');
+        h7.css('text-align', 'center');
         var ol = $('<ol>');
         h7.append(ol);
         for (var i = 100; i >= 0; i--) {
@@ -240,16 +257,18 @@ $(document).ready(function () {
             else {
                 var nameAndScore = JSON.parse(localStorage.getItem('nameAndScore' + i));
                 var li = $('<li>');
+                var newDiv = $('<div>');
                 li.attr('class', nameAndScore.score);
                 li.text(nameAndScore.name + " - " + nameAndScore.score);
                 ol.append(li);
             }
         }
-        ol.css('font-size', '20px');
         ol.css('font-weight', '200');
         ol.css('margin', '40px');
+        $('li').css('margin-top', '10px');
+        $('li').css('background-color', 'grey');
+       
         var items = $('ol > li').get();
-        console.log(items);
         items.sort(function (a, b) {
             var A = $(a);
             var B = $(b);
@@ -276,6 +295,14 @@ $(document).ready(function () {
             }
 
         });
+        if ($(window).width() <= 680) {
+            h7.css('font-size', '50px');
+            ol.css('font-size', '20px');
+        }
+        else {
+            h7.css('font-size', '75px');
+            ol.css('font-size', '35px');
+        }
     });
       
     
