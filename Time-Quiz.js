@@ -141,8 +141,8 @@ $(document).ready(function () {
         var p = $('<p>');
         p.text("Your Final Score is  " + score + ".");
         div.append(p);
-        h5.text("Enter Your Initial:  ");
-        $('<input>').attr('type', 'text').attr('id', 'name').appendTo(h5);
+        h5.text("");
+        $('<input>').attr('type', 'text').attr('id', 'name').attr('placeholder', 'Enter Your initial').appendTo(h5);
         $('<input>').attr('type', 'submit').attr('id', 'submitScore').appendTo(h5);
         h5.css('text-align', 'center');
         $('#submitScore').click(function () {
