@@ -83,8 +83,9 @@ $(document).ready(function () {
                 btn.text(questions[i].choices[j]);
                 div.append(btn);
                 btn.css('display', 'block');
-                btn.css('margin', '30px');
-                btn.css('margin-left', '80px');
+                btn.css('margin-right', 'auto');
+                btn.css('margin-left', 'auto');
+                btn.css('margin-top', '30px');
                 if ($(window).width() <= 600) {
                     btn.css('width', '60%');
                 }
@@ -201,7 +202,7 @@ $(document).ready(function () {
         });
         $('#clearHighScore').click(function (event) {
             event.preventDefault();
-            for (var i = localSN; i >= 0; i--) {
+            for (var i = 100; i >= 0; i--) {
                 localStorage.removeItem('nameAndScore' + i);
             }
             ol.remove();
@@ -224,6 +225,7 @@ $(document).ready(function () {
         h7.text("Highscores");
         h7.css('font-size', '50px');
         h7.css('margin', '30px');
+        h7.css('font-family', 'Times New Roman');
         var ol = $('<ol>');
         h7.append(ol);
         for (var i = 100; i >= 0; i--) {
@@ -240,6 +242,7 @@ $(document).ready(function () {
         }
         ol.css('font-size', '20px');
         ol.css('font-weight', '200');
+        ol.css('margin', '30px');
         var items = $('ol > li').get();
         console.log(items);
         items.sort(function (a, b) {
@@ -250,7 +253,6 @@ $(document).ready(function () {
             if (A[0].className > B[0].className) return -1;
             return 0;
         });
-        ol.css('margin', '30px');
         var div = $('<div>');
         $('<button>').attr('id', 'Back').text("Back").appendTo(div);
         $('body').append(div);
