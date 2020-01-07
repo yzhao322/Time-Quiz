@@ -74,7 +74,8 @@ $(document).ready(function () {
         if (i < 5) {
             var div = $('<div>');
             div.text(i + 1 + ". " + questions[i].title);
-            div.css('padding', '30px');
+            div.css('padding', '20px');
+            div.css('padding-top', '45px');
             h3.empty().append(div);
         
         
@@ -83,11 +84,14 @@ $(document).ready(function () {
                 btn.text(questions[i].choices[j]);
                 div.append(btn);
                 btn.css('display', 'block');
-                btn.css('margin-right', 'auto');
-                btn.css('margin-left', 'auto');
                 btn.css('margin-top', '30px');
-                if ($(window).width() <= 600) {
+                if ($(window).width() <= 680) {
                     btn.css('width', '60%');
+                    btn.css('margin-right', 'auto');
+                    btn.css('margin-left', 'auto');
+                }
+                else {
+                    btn.css('margin-left', '25%');
                 }
             }
             
@@ -97,8 +101,8 @@ $(document).ready(function () {
                 if (questions[i].answer === $(event.target).text()) {
                     times = times + 1;
                     i++;
-                    h4.text('Correct!').show(1).delay(300).hide(1);
-                    $('hr').show(1).delay(300).hide(1);
+                    h4.text('Correct!').show(1).delay(350).hide(1);
+                    $('hr').show(1).delay(350).hide(1);
                     quizQuestion();
             
                 }
@@ -106,8 +110,8 @@ $(document).ready(function () {
                     count = count - 15;
                     times = times + 1;
                     i++;
-                    h4.text('Wrong!').show(1).delay(300).hide(1);
-                    $('hr').show(1).delay(300).hide(1);
+                    h4.text('Wrong!').show(1).delay(350).hide(1);
+                    $('hr').show(1).delay(350).hide(1);
                     quizQuestion();
                     
                 }
@@ -136,6 +140,7 @@ $(document).ready(function () {
         $('<input>').attr('type', 'text').attr('id', 'name').appendTo(h5);
         $('<input>').attr('type', 'submit').attr('id', 'submitScore').appendTo(h5);
         h5.css('text-align', 'center');
+        $('input').css('font-size', '16px');
         $('#submitScore').click(function () {
             var name = $('#name').val();
             var nameAndScore = { 'name': name, 'score': score };
@@ -224,7 +229,7 @@ $(document).ready(function () {
         $('body').append(h7);
         h7.text("Highscores");
         h7.css('font-size', '50px');
-        h7.css('margin', '30px');
+        h7.css('margin', '50px');
         h7.css('font-family', 'Times New Roman');
         var ol = $('<ol>');
         h7.append(ol);
@@ -242,7 +247,7 @@ $(document).ready(function () {
         }
         ol.css('font-size', '20px');
         ol.css('font-weight', '200');
-        ol.css('margin', '30px');
+        ol.css('margin', '40px');
         var items = $('ol > li').get();
         console.log(items);
         items.sort(function (a, b) {

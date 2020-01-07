@@ -19,9 +19,9 @@ div{
     margin: 30px;
 }
 button{
-    padding: 10px 30px;
+    padding: 10px 15px;
     font-size: 15px;
-    border-radius: 20px;
+    border-radius: 10px;
     
 }
 button:active{
@@ -33,6 +33,10 @@ button:active{
     left: 30px;
     top: 10px;
     font-weight: 500;
+    background-color: rgb(46, 45, 45);
+    color: aliceblue;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .TimeRemaining{
@@ -41,6 +45,7 @@ button:active{
     right: 30px;
     top: 10px;
     font-weight: 500;
+    padding: 10px;
 }
 p{
     font-size: 20px;
@@ -56,4 +61,9 @@ p{
 #clearHighScore{
     display: inline-block;
     margin: 10px;
+}
+@media screen and (min-width: 680px){
+    p{
+        margin: 60px 200px;
+    }
 }
