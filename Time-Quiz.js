@@ -95,11 +95,17 @@ $(document).ready(function () {
             
             div.click(function (event) {
                 event.preventDefault();
+                var audioElementCorrect = document.createElement("audio");
+                audioElementCorrect.setAttribute("src", "./source/game-sound-correct.wav");
+
+                var audioElementWrong = document.createElement("audio");
+                audioElementWrong.setAttribute("src", "./source/game-sound-wrong.wav");
                 
                 if (questions[i].answer === $(event.target).text()) {
                     times = times + 1;
                     i++;
                     h4.text('Correct!').show(1).delay(350).hide(1);
+                    audioElementCorrect.play();
                     $('hr').show(1).delay(350).hide(1);
                     quizQuestion();
             
@@ -109,6 +115,7 @@ $(document).ready(function () {
                     times = times + 1;
                     i++;
                     h4.text('Wrong!').show(1).delay(350).hide(1);
+                    audioElementWrong.play();
                     $('hr').show(1).delay(350).hide(1);
                     quizQuestion();
                     
@@ -130,6 +137,7 @@ $(document).ready(function () {
         h4.hide();
         var div = $('div');
         div.text("All Done!");
+        div.css('font-family', 'Times New Roman');
         var p = $('<p>');
         p.text("Your Final Score is  " + score + ".");
         div.append(p);
@@ -144,15 +152,8 @@ $(document).ready(function () {
             highScores();
 
         });
-        if ($(window).width() <= 680) {
             div.css('font-size', '30px');
             $('input').css('font-size', '16px');
-        }
-        else {
-            div.css('font-size', '60px');
-            p.css('font-size', '40px');
-            $('input').css('font-size', '23px');
-        }
     }
     
     function highScores() {
@@ -185,6 +186,8 @@ $(document).ready(function () {
         ol.css('margin', '40px');
         $('li').css('margin-top', '10px');
         $('li').css('background-color', 'grey');
+        $('li').css('border-radius', '10px');
+        $('li').css('text-align', 'center');
         var items = $('ol > li').get();
         items.sort(function (a, b) {
             var A = $(a);
@@ -267,6 +270,7 @@ $(document).ready(function () {
         ol.css('margin', '40px');
         $('li').css('margin-top', '10px');
         $('li').css('background-color', 'grey');
+        $('li').css('border-radius', '10px');
        
         var items = $('ol > li').get();
         items.sort(function (a, b) {
