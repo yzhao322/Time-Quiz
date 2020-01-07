@@ -6,12 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="./Time-Quiz.css">
-  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+    <script src="./Time-Quiz.js"></script> 
 </head>
 <body>
     <h1>Coding Quiz Challenge<br><br><img src="./source/Screen-ShotAM.png" width="350px"><p>Click "Start Quiz" button to start this challenge. Score is calculated by time remaining. 15 seconds are taken off for every question you got wrong. Answering quickly and correctly will result in higher scores. </p>
-        <button>Start Quiz!</button></h1>
-    <h2></h2>
+        <button id="Start">Start Quiz!</button></h1>
+    
+    <nav>
+        <h2 class="Highscore"></h2>
+        <h2 class="TimeRemaining"></h2>
+    </nav>
+    
     <h3></h3>
     <hr>
     <h4></h4>
@@ -19,7 +25,6 @@
     
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
-    <script src="./Time-Quiz.js"></script> 
+    
 </body>
 </html>
