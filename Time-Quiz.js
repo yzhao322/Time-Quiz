@@ -296,6 +296,11 @@ $(document).ready(function () {
             if (A[0].className > B[0].className) return -1;
             return 0;
         });
+
+        $.each(items, function (i, li) {
+            ol.append(li);
+        });
+
         var div = $('<div>');
         $('<button>').attr('id', 'Back').text("Back").appendTo(div);
         $('body').append(div);
