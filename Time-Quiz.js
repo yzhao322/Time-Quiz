@@ -298,7 +298,7 @@ $(document).ready(function () {
         });
 
         $.each(items, function (i, li) {
-            ol.append(li);
+            ol.append(li); // This removes li from the old spot and moves it 
         });
 
         var div = $('<div>');
