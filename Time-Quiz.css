@@ -11,7 +11,7 @@ h1{
 }
 h3{
     text-align:center;
-    margin: 30px;
+    margin: 20px;
 }
 
 div{
@@ -65,7 +65,6 @@ p{
 @media screen and (min-width: 680px){
     p{
         margin: 60px 200px;
-    
     }
    
 }

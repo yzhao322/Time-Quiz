@@ -29,9 +29,9 @@ $(document).ready(function () {
     ];
       
     var button = $('#Start');
-    var h1 = $('h1');
+    var h1 = $('h1'); 
     var highScore = $('.Highscore');
-    var h2 = $('.TimeRemaining');
+    var h2 = $('.TimeRemaining'); 
     var h3 = $('h3');
     var h4 = $('h4');
     var h5 = $('h5');
@@ -45,6 +45,7 @@ $(document).ready(function () {
     h2.append('Time Remain ' + count);
     $('hr').hide();
 
+    //Click button to triger timer
     button.click(function () {
         h1.hide();
         i = 0;
@@ -69,8 +70,10 @@ $(document).ready(function () {
        
     });
 
+    //Display total 5 questions. Jump to next one when right answer be clicked. Jump to next one when wrong answer be clicked but minus 15 seconds from timer.
+    
     function quizQuestion() {
-        
+        //Generate questions.
         if (i < 5) {
             var div = $('<div>');
             div.text(i + 1 + ". " + questions[i].title);
@@ -78,10 +81,10 @@ $(document).ready(function () {
             div.css('padding-top', '50px');
             h3.empty().append(div);
         
-        
+            //Generate answers/
             for (var j = 0; j < questions[i].choices.length; j++) {
                 var btn = $('<button>');
-                btn.attr('id', 'options');
+                btn.attr('id', j);
                 btn.text(questions[i].choices[j]);
                 div.append(btn);
                 btn.css('display', 'block');
@@ -89,11 +92,12 @@ $(document).ready(function () {
                 btn.css('width', '160px');
                 btn.css('margin-right', 'auto');
                 btn.css('margin-left', 'auto');
-                
-                
+                 
             }
             
-            div.click(function (event) {
+            
+                var op = $('#0, #1, #2, #3');
+                op.click(function (event) {
                 event.preventDefault();
                 var audioElementCorrect = document.createElement("audio");
                 audioElementCorrect.setAttribute("src", "./source/game-sound-correct.wav");
@@ -101,6 +105,7 @@ $(document).ready(function () {
                 var audioElementWrong = document.createElement("audio");
                 audioElementWrong.setAttribute("src", "./source/game-sound-wrong.wav");
                 
+                //Check answer.
                 if (questions[i].answer === $(event.target).text()) {
                     times = times + 1;
                     i++;
@@ -130,6 +135,8 @@ $(document).ready(function () {
     
     }
 
+    //Display the scores. And ask Input(user's name).
+    //Send Name+score to localstorage when "submit" button is clicked.
     function allDone() {
         $('hr').hide();
         h2.hide();
@@ -155,7 +162,10 @@ $(document).ready(function () {
             div.css('font-size', '30px');
             $('input').css('font-size', '16px');
     }
-    
+
+    //Display sorted name+score in LocalStorage.
+    //Click "Go Back" button to go back the landing page.
+    //Click "Clear Highscore" will remove all the data in localstorage.
     function highScores() {
         h3.hide();
         h5.hide();
@@ -188,6 +198,8 @@ $(document).ready(function () {
         $('li').css('background-color', 'grey');
         $('li').css('border-radius', '10px');
         $('li').css('text-align', 'center');
+
+        //sort list by score.
         var items = $('ol > li').get();
         items.sort(function (a, b) {
             var A = $(a);
@@ -199,7 +211,7 @@ $(document).ready(function () {
         });
         
         $.each(items, function (i, li) {
-            ol.append(li); /* This removes li from the old spot and moves it */
+            ol.append(li); // This removes li from the old spot and moves it 
         });
 
         var div = $('<div>');
@@ -236,6 +248,9 @@ $(document).ready(function () {
  
     }
 
+
+    //Click "View Highscore" button to display the all name+score in LocalStorage.
+    //Click "Back" button to go back the previous page.
     highScore.click(function () {
         button.hide();
         h1.hide();
